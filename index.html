@@ -1,0 +1,1051 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Feliz Cumpleaños, Mi Amor ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#12000a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   FONDO GENERAL
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,45,110,.20), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(255,105,180,.15), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(180,0,70,.18), transparent 35%);
+    pointer-events:none;
+    z-index:-1;
+}
+
+/* =========================
+   ESCENA DEL SOBRE
+========================= */
+
+.escena-sobre{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:30px 20px;
+    text-align:center;
+    background:
+        linear-gradient(135deg,#18000d,#420019,#160009);
+    transition:opacity 1.2s ease, transform 1.2s ease;
+}
+
+.escena-sobre.ocultar{
+    opacity:0;
+    transform:scale(1.1);
+    pointer-events:none;
+}
+
+.titulo-sobre{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(2.2rem,7vw,4.5rem);
+    margin-bottom:10px;
+    text-shadow:0 0 20px rgba(255,80,140,.7);
+}
+
+.subtitulo-sobre{
+    font-size:clamp(.9rem,3vw,1.2rem);
+    opacity:.85;
+    margin-bottom:45px;
+}
+
+/* =========================
+   SOBRE
+========================= */
+
+.sobre{
+    width:min(420px,88vw);
+    height:280px;
+    position:relative;
+    cursor:pointer;
+    perspective:1000px;
+    filter:drop-shadow(0 25px 35px rgba(0,0,0,.55));
+    animation:flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+.sobre-base{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(145deg,#e91e63,#9b0038);
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:inset 0 0 30px rgba(0,0,0,.2);
+}
+
+.sobre-base::before,
+.sobre-base::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+    border-style:solid;
+    z-index:3;
+}
+
+.sobre-base::before{
+    left:0;
+    bottom:0;
+    border-width:140px 210px 0 0;
+    border-color:#b50043 transparent transparent transparent;
+}
+
+.sobre-base::after{
+    right:0;
+    bottom:0;
+    border-width:140px 0 0 210px;
+    border-color:#b50043 transparent transparent transparent;
+}
+
+.tapa{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:55%;
+    background:linear-gradient(145deg,#ff4081,#b80046);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:transform 1s cubic-bezier(.68,-.55,.27,1.55);
+    z-index:5;
+}
+
+.sobre.abierto .tapa{
+    transform:rotateX(180deg);
+}
+
+.carta-salida{
+    position:absolute;
+    width:82%;
+    height:72%;
+    left:9%;
+    bottom:5%;
+    background:#fff8fb;
+    color:#5a1734;
+    border-radius:8px;
+    padding:25px;
+    z-index:2;
+    transition:transform 1.2s cubic-bezier(.68,-.55,.27,1.55);
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.sobre.abierto .carta-salida{
+    transform:translateY(-75%);
+}
+
+.carta-salida h3{
+    font-family:'Dancing Script',cursive;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.carta-salida p{
+    font-size:.85rem;
+    line-height:1.6;
+}
+
+.sello{
+    position:absolute;
+    width:70px;
+    height:70px;
+    background:#ff1744;
+    border-radius:50%;
+    left:50%;
+    top:42%;
+    transform:translate(-50%,-50%);
+    z-index:8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    box-shadow:
+        0 0 0 7px rgba(255,255,255,.18),
+        0 0 30px rgba(255,0,80,.8);
+    transition:opacity .5s, transform .5s;
+}
+
+.sobre.abierto .sello{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(0);
+}
+
+.instruccion{
+    margin-top:45px;
+    font-size:.9rem;
+    animation:parpadeo 1.5s infinite;
+}
+
+@keyframes parpadeo{
+    50%{opacity:.45}
+}
+
+/* =========================
+   SECCIÓN CUMPLEAÑOS
+========================= */
+
+.cumpleanos{
+    display:none;
+    min-height:100vh;
+    padding:70px 20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.cumpleanos.mostrar{
+    display:block;
+    animation:aparecer 1.5s ease;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.etiqueta{
+    color:#ff72a5;
+    font-size:.9rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.titulo-principal{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(3rem,11vw,7rem);
+    line-height:.9;
+    background:linear-gradient(90deg,#ff4d88,#fff,#ff4d88);
+    -webkit-background-clip:text;
+    color:transparent;
+    background-size:200%;
+    animation:brillo 3s linear infinite;
+}
+
+@keyframes brillo{
+    to{background-position:200% center}
+}
+
+.numero{
+    font-size:clamp(7rem,25vw,14rem);
+    font-weight:700;
+    line-height:1;
+    background:linear-gradient(180deg,#fff,#ff4d91,#a90048);
+    -webkit-background-clip:text;
+    color:transparent;
+    text-shadow:0 0 50px rgba(255,30,100,.35);
+}
+
+.frase{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(1.6rem,5vw,3rem);
+    margin-top:-10px;
+}
+
+.frase-secundaria{
+    max-width:700px;
+    margin:25px auto;
+    line-height:1.8;
+    opacity:.85;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+
+.boton{
+    border:none;
+    background:linear-gradient(135deg,#ff1768,#b60046);
+    color:white;
+    padding:16px 30px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:1rem;
+    cursor:pointer;
+    margin-top:25px;
+    box-shadow:0 10px 30px rgba(255,0,90,.3);
+    transition:.3s;
+}
+
+.boton:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 15px 40px rgba(255,0,90,.5);
+}
+
+/* =========================
+   TARJETA PRINCIPAL
+========================= */
+
+.tarjeta{
+    max-width:950px;
+    margin:70px auto 0;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+    border-radius:30px;
+    padding:45px 25px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+    display:none;
+}
+
+.tarjeta.mostrar{
+    display:block;
+    animation:tarjetaEntrada 1s ease;
+}
+
+@keyframes tarjetaEntrada{
+    from{
+        opacity:0;
+        transform:translateY(60px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.tarjeta h2{
+    font-family:'Dancing Script',cursive;
+    color:#ff79a9;
+    font-size:clamp(2.5rem,7vw,4rem);
+    margin-bottom:25px;
+}
+
+.mensaje{
+    max-width:760px;
+    margin:auto;
+    font-size:1.05rem;
+    line-height:2;
+    color:#ffeaf2;
+}
+
+.mensaje strong{
+    color:#ff82ad;
+}
+
+/* =========================
+   SEPARADORES
+========================= */
+
+.separador{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:55px auto 35px;
+    max-width:700px;
+    color:#ff78a8;
+}
+
+.separador::before,
+.separador::after{
+    content:"";
+    height:1px;
+    background:linear-gradient(90deg,transparent,#ff5d95,transparent);
+    flex:1;
+}
+
+/* =========================
+   GALERÍA 4 FOTOS
+========================= */
+
+.galeria{
+    max-width:950px;
+    margin:45px auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.foto{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    aspect-ratio:1/1;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+    border:2px solid rgba(255,255,255,.12);
+}
+
+.foto img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .7s ease;
+}
+
+.foto:hover img{
+    transform:scale(1.1);
+}
+
+.foto::after{
+    content:"❤️";
+    position:absolute;
+    right:15px;
+    bottom:12px;
+    font-size:1.4rem;
+    opacity:.9;
+    text-shadow:0 3px 10px #000;
+}
+
+/* =========================
+   RECUERDOS
+========================= */
+
+.recuerdos{
+    max-width:850px;
+    margin:50px auto;
+}
+
+.recuerdo{
+    background:rgba(255,255,255,.06);
+    border-left:3px solid #ff4c89;
+    padding:20px 25px;
+    margin:18px 0;
+    border-radius:0 15px 15px 0;
+    text-align:left;
+}
+
+.recuerdo h3{
+    color:#ff75a6;
+    margin-bottom:8px;
+}
+
+.recuerdo p{
+    line-height:1.7;
+    opacity:.85;
+}
+
+/* =========================
+   MENSAJE FINAL
+========================= */
+
+.final{
+    margin-top:70px;
+    padding:50px 20px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,0,80,.15),
+        rgba(255,255,255,.03)
+    );
+    border-radius:30px;
+}
+
+.final h2{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(3rem,8vw,5rem);
+    color:#ff6fa4;
+}
+
+.final p{
+    max-width:700px;
+    margin:20px auto;
+    line-height:2;
+}
+
+/* =========================
+   CORAZONES
+========================= */
+
+.corazon{
+    position:fixed;
+    bottom:-30px;
+    color:#ff4b87;
+    font-size:20px;
+    pointer-events:none;
+    animation:subir linear forwards;
+    z-index:100;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(0) rotate(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   CONFETI
+========================= */
+
+.confeti{
+    position:fixed;
+    width:9px;
+    height:15px;
+    top:-20px;
+    z-index:99;
+    pointer-events:none;
+    animation:caer linear forwards;
+}
+
+@keyframes caer{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    .sobre{
+        height:230px;
+    }
+
+    .carta-salida{
+        padding:18px;
+    }
+
+    .carta-salida h3{
+        font-size:1.5rem;
+    }
+
+    .carta-salida p{
+        font-size:.72rem;
+    }
+
+    .sello{
+        width:60px;
+        height:60px;
+    }
+
+    .galeria{
+        grid-template-columns:1fr;
+    }
+
+    .tarjeta{
+        padding:35px 18px;
+    }
+
+    .mensaje{
+        font-size:.95rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================
+     SOBRE INICIAL
+===================================== -->
+
+<section class="escena-sobre" id="escenaSobre">
+
+    <div class="titulo-sobre">
+        Tengo algo muy especial para ti ❤️
+    </div>
+
+    <div class="subtitulo-sobre">
+        Una pequeña sorpresa hecha con todo mi amor...
+    </div>
+
+    <div class="sobre" id="sobre">
+
+        <div class="carta-salida">
+            <h3>Para el amor de mi vida ❤️</h3>
+            <p>
+                Hay personas que llegan a nuestra vida...
+                y terminan convirtiéndose en nuestro hogar.
+            </p>
+        </div>
+
+        <div class="sobre-base"></div>
+
+        <div class="tapa"></div>
+
+        <div class="sello">
+            ❤️
+        </div>
+
+    </div>
+
+    <div class="instruccion" id="instruccion">
+        💌 Haz clic en el sobre para abrirlo
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     CUMPLEAÑOS
+===================================== -->
+
+<section class="cumpleanos" id="cumpleanos">
+
+    <div class="etiqueta">
+        Hoy celebramos a alguien muy especial
+    </div>
+
+    <h1 class="titulo-principal">
+        ¡Feliz Cumpleaños!
+    </h1>
+
+    <div class="numero">
+        33
+    </div>
+
+    <div class="frase">
+        años de una mujer maravillosa ✨
+    </div>
+
+    <p class="frase-secundaria">
+        Hoy no solo celebramos el día en que naciste.
+        Celebramos también la persona increíble que eres,
+        todo lo que has construido y todos los momentos
+        que hemos compartido.
+    </p>
+
+    <button class="boton" id="abrirSorpresa">
+        💝 Descubrir mi mensaje
+    </button>
+
+
+    <!-- =====================================
+         TARJETA
+    ====================================== -->
+
+    <div class="tarjeta" id="tarjeta">
+
+        <h2>
+            Mi amor, esto es para ti ❤️
+        </h2>
+
+        <div class="mensaje">
+
+            <p>
+                Hoy quiero recordarte algo que quizás no te digo
+                todas las veces que debería:
+                <strong>eres una persona muy importante para mí.</strong>
+            </p>
+
+            <br>
+
+            <p>
+                Gracias por cada sonrisa, cada abrazo,
+                cada conversación, cada momento bonito
+                y también por estar en los momentos difíciles.
+            </p>
+
+            <br>
+
+            <p>
+                La vida nos ha regalado muchos recuerdos,
+                y deseo que todavía nos queden
+                muchísimos más por construir.
+            </p>
+
+            <br>
+
+            <p>
+                Espero que este nuevo año de vida esté lleno
+                de felicidad, salud, sueños cumplidos,
+                momentos inolvidables y muchas razones para sonreír.
+            </p>
+
+            <br>
+
+            <p>
+                <strong>
+                    Feliz cumpleaños, mi amor.
+                    Que nunca olvides lo especial que eres. ❤️
+                </strong>
+            </p>
+
+        </div>
+
+
+        <!-- =================================
+             FOTOS
+        ================================== -->
+
+        <div class="separador">
+            Nuestros recuerdos ❤️
+        </div>
+
+        <div class="galeria">
+
+            <div class="foto">
+                <img src="foto1.jpg" alt="Nuestro recuerdo 1">
+            </div>
+
+            <div class="foto">
+                <img src="foto2.jpg" alt="Nuestro recuerdo 2">
+            </div>
+
+            <div class="foto">
+                <img src="foto3.jpg" alt="Nuestro recuerdo 3">
+            </div>
+
+            <div class="foto">
+                <img src="foto4.jpg" alt="Nuestro recuerdo 4">
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             RECUERDOS
+        ================================== -->
+
+        <div class="separador">
+            Una historia que continúa ✨
+        </div>
+
+        <div class="recuerdos">
+
+            <div class="recuerdo">
+                <h3>❤️ Momentos juntos</h3>
+                <p>
+                    Cada momento compartido se ha convertido
+                    en una parte especial de nuestra historia.
+                </p>
+            </div>
+
+            <div class="recuerdo">
+                <h3>🥰 Sonrisas</h3>
+                <p>
+                    Porque incluso los momentos más sencillos
+                    pueden convertirse en recuerdos que guardamos
+                    para siempre.
+                </p>
+            </div>
+
+            <div class="recuerdo">
+                <h3>🌹 Lo que viene</h3>
+                <p>
+                    Todavía quedan muchos lugares por conocer,
+                    muchas experiencias por vivir y muchos
+                    recuerdos por crear.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             FINAL
+        ================================== -->
+
+        <div class="final">
+
+            <h2>
+                Te deseo lo mejor hoy y siempre ❤️
+            </h2>
+
+            <p>
+                Que estos 33 años sean el comienzo de una etapa
+                llena de cosas bonitas, sueños cumplidos,
+                tranquilidad, amor y felicidad.
+            </p>
+
+            <p>
+                Gracias por ser tú.
+            </p>
+
+            <h2>
+                ¡Feliz cumpleaños! 🎂✨
+            </h2>
+
+            <p>
+                Con todo mi amor ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     MÚSICA
+===================================== -->
+
+<audio id="audio" autoplay loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* =====================================
+   ELEMENTOS
+===================================== */
+
+const sobre = document.getElementById("sobre");
+const escenaSobre = document.getElementById("escenaSobre");
+const cumpleanos = document.getElementById("cumpleanos");
+const instruccion = document.getElementById("instruccion");
+const abrirSorpresa = document.getElementById("abrirSorpresa");
+const tarjeta = document.getElementById("tarjeta");
+const audio = document.getElementById("audio");
+
+audio.volume = 0.75;
+
+
+/* =====================================
+   MÚSICA
+===================================== */
+
+function reproducirMusica(){
+
+    audio.play().catch(() => {
+
+        console.log(
+            "El navegador bloqueó el autoplay. " +
+            "La música comenzará al interactuar."
+        );
+
+    });
+
+}
+
+
+/* Intentar reproducir al cargar */
+
+window.addEventListener("load", () => {
+
+    reproducirMusica();
+
+});
+
+
+/* Primera interacción */
+
+document.addEventListener("click", () => {
+
+    reproducirMusica();
+
+}, {once:true});
+
+
+document.addEventListener("touchstart", () => {
+
+    reproducirMusica();
+
+}, {once:true});
+
+
+/* =====================================
+   ABRIR SOBRE
+===================================== */
+
+sobre.addEventListener("click", () => {
+
+    reproducirMusica();
+
+    sobre.classList.add("abierto");
+
+    instruccion.textContent =
+        "❤️ Hay algo especial esperándote...";
+
+    crearCorazones(25);
+
+    setTimeout(() => {
+
+        escenaSobre.classList.add("ocultar");
+
+    },1600);
+
+
+    setTimeout(() => {
+
+        escenaSobre.style.display = "none";
+
+        cumpleanos.classList.add("mostrar");
+
+        crearCorazones(45);
+        crearConfeti(100);
+
+    },2600);
+
+});
+
+
+/* =====================================
+   MOSTRAR MENSAJE
+===================================== */
+
+abrirSorpresa.addEventListener("click", () => {
+
+    tarjeta.classList.add("mostrar");
+
+    crearCorazones(60);
+    crearConfeti(80);
+
+    setTimeout(() => {
+
+        tarjeta.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    },200);
+
+});
+
+
+/* =====================================
+   CORAZONES
+===================================== */
+
+function crearCorazones(cantidad){
+
+    for(let i=0;i<cantidad;i++){
+
+        setTimeout(() => {
+
+            const corazon =
+                document.createElement("div");
+
+            corazon.className = "corazon";
+
+            corazon.textContent =
+                Math.random() > .5 ? "❤️" : "💗";
+
+            corazon.style.left =
+                Math.random()*100 + "vw";
+
+            corazon.style.fontSize =
+                (15 + Math.random()*25) + "px";
+
+            corazon.style.animationDuration =
+                (4 + Math.random()*5) + "s";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(() => {
+
+                corazon.remove();
+
+            },9000);
+
+        },i*70);
+
+    }
+
+}
+
+
+/* =====================================
+   CONFETI
+===================================== */
+
+function crearConfeti(cantidad){
+
+    for(let i=0;i<cantidad;i++){
+
+        setTimeout(() => {
+
+            const pieza =
+                document.createElement("div");
+
+            pieza.className = "confeti";
+
+            pieza.style.left =
+                Math.random()*100 + "vw";
+
+            pieza.style.animationDuration =
+                (3 + Math.random()*4) + "s";
+
+            pieza.style.transform =
+                `rotate(${Math.random()*360}deg)`;
+
+            const colores = [
+                "#ff4081",
+                "#ff1744",
+                "#ffffff",
+                "#ffd1e2",
+                "#ff80ab"
+            ];
+
+            pieza.style.background =
+                colores[
+                    Math.floor(
+                        Math.random()*colores.length
+                    )
+                ];
+
+            document.body.appendChild(pieza);
+
+            setTimeout(() => {
+
+                pieza.remove();
+
+            },8000);
+
+        },i*25);
+
+    }
+
+}
+
+
+/* =====================================
+   CORAZONES AUTOMÁTICOS
+===================================== */
+
+setInterval(() => {
+
+    if(
+        cumpleanos.classList.contains("mostrar")
+    ){
+
+        crearCorazones(1);
+
+    }
+
+},1800);
+
+</script>
+
+</body>
+</html>
+```
